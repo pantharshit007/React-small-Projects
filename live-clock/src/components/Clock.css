@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0; 
+    background-image: url("./lofi-2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    max-width: 1280px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+}
+
+.space{
+    width:100%;
+    height:7rem;
+    /* background-color: #70cbf2b3; */
+    backdrop-filter: blur(2px);
+}
+
+h1 {
+    color: white;
+    font-size: 5rem;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    
+}
