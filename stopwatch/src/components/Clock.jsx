@@ -1,44 +1,73 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 function Clock() {
 
   // TODO:
-  // find the time difference 
-  // reset the time
+  // find the isRunning difference 
+  // reset the isRunning
   //update the watch data
 
-  const [time, setTime] = useState(new Date())
-  
-  const startTime = time.getTime();
+  const [isRunning, setIsRunning] = useState(false)
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const startisRunningRef = useRef(0);
+  const intervalIdRef = useRef(null);
+
+  // const startisRunningRef = isRunning.getisRunning();
   function start() {
-   
-    console.log(time.getTime())
+    setIsRunning(true);
+    startisRunningRef.current = Date.now() - elapsedTime;
   }
+
   function stop() { 
-    setTime(new Date())
-    const elapsedTime = time.getTime() - startTime ;
-    console.log(elapsedTime)
+    setIsRunning(false)
   }
-  function reset() {}
 
-  useState(()=>{
-    setInterval(()=>{
-        // setTime(new Date());
-    },100)
-  },[])
+  function reset() {
+    setIsRunning(false)
+    setElapsedTime(0)
+  }
 
+  useEffect(()=>{
+
+    if (isRunning) {
+  
+      intervalIdRef.current = setInterval(() => {
+        setElapsedTime(Date.now() - startisRunningRef.current);
+      }, 10); 
+    } 
+
+    return()=>{
+      clearInterval(intervalIdRef.current)
+    }
+    
+  },[isRunning])
+
+  function formatTime(){
+
+    let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+    let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
+    let seconds = Math.floor(elapsedTime / (1000) % 60);
+    let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+    hours = String(hours).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    milliseconds = String(milliseconds).padStart(2, "0");
+
+    return `${minutes}:${seconds}:${milliseconds}`;
+}
 
   return (
     <div className="box">
-        <div className="name">StopWatch</div>
-        <div className="container">
-            00:00:00
+        <div className="name">STOP WATCH</div>
+        <div className="timer">
+            {formatTime()}
         </div>
         <div className="functionality">
-            <button className="start" onClick={start}>Start</button>
-            <button className="reset" onClick={reset}>Reset</button>
+            <button className="start" onClick={start}>Start</button> 
             <button className="stop" onClick={stop}>Stop</button>
+            <button className="reset" onClick={reset}>Reset</button>
         </div>
     </div>
   )
