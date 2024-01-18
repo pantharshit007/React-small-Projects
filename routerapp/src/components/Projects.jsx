@@ -1,8 +1,18 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 
 function Projects(){
+
+    const navigate = useNavigate();
+    function clickHandler(){
+        // move to about page
+        navigate('/about');
+    }
   return (
-    <div>Projects</div>
+    <div>
+        Projects <br/>
+        <button onClick={clickHandler}>About Page</button>
+    </div>
   )
 }
 
