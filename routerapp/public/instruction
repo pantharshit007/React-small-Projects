@@ -1,0 +1,10 @@
+1. npm install react-router-dom
+2. Add <BrowserRouter> to your main.jsx such that your App.jsx in in b/w them.
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+
+3.  <Routes>
+        <Route/>
+    </Routes>
+    
