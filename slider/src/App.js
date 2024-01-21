@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
 
-      <div className="mb-[5rem]">
-        Card Slider
+      <div className="my-[2rem]  ">
+        <span className="text-blue-900 text-2xl font-bold">Card Slider</span>
       </div>
       <div className="slider">
         <Slider data = {data}/>
