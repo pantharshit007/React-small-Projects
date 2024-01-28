@@ -30,6 +30,7 @@ function SignUpForm({setIsLoggedIn}) {
         }else{
             setIsLoggedIn(true);
             navigate('/dashboard');
+            toast.success('Account Created!')
         }
         
     }
