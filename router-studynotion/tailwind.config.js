@@ -28,6 +28,16 @@ export default {
         yellow: {
           50: "#FFD60A",
         },
+        purple:{
+          100: "#EAC3F4",
+          200: "#DB97ED",
+          300: "#CC6CE5",
+          400: "#BD41DD"
+        },
+        greyCustom: {
+          100: "#FFFFFF",
+          200: "#E6E6E6E"
+        }
       },
     },
   },
