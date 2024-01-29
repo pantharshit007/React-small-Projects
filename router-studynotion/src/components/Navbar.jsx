@@ -35,7 +35,7 @@ function Navbar(props) {
       {/* button: Login-SignUp || LogOut-DashBoard */}
       <div className='flex items-center gap-x-4 '>
         {/* If you are Logged In */}
-        { !isLoggedIn &&
+        { !isLoggedIn &&  
           <Link to="/login"> 
             <button className="bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border-richblack-700"
             >Log In</button>

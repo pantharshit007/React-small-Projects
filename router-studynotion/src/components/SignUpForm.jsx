@@ -15,7 +15,6 @@ function SignUpForm({setIsLoggedIn}) {
     })
     const [showPassword1, setShowPassword1] = React.useState(false);
     const [showPassword2, setShowPassword2] = React.useState(false);
-
     const [accountType, setAccountType] = React.useState("student");
 
     function changeHandler(event) {
@@ -34,11 +33,17 @@ function SignUpForm({setIsLoggedIn}) {
             navigate('/dashboard');
             toast.success('Account Created!')
         }
-        
+        /*const accountData ={
+            ...formData,
+            accountType
+        }
+        console.log("printing account Info...");
+        console.log(accountData);*/
     }
 
   return (
     <div >
+
         {/* Student / Instructor Tab */}
         <div className='flex bg-richblack-800 p-1 gap-x-1 my-6 rounded-full max-w-max transition-all duration-200 ease-in-out'>
             <button className={`${accountType === 'student' ?
@@ -148,6 +153,7 @@ function SignUpForm({setIsLoggedIn}) {
                 Create Account</button>
             
         </form>
+        
     </div>
   )
 }
