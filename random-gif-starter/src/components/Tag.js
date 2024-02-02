@@ -5,6 +5,7 @@ import useGif from '../hooks/useGif';
 function Tag() {
   const [tag, setTag] = useState('Cat');
 
+  //object de-structuring using custom hook
   const { gif, fetchData, loader } = useGif(tag);
 
   function keyHandler(event) {
