@@ -11,7 +11,7 @@ export default function App() {
       <h1 className='bg-white rounded-md w-11/12 text-center font-bold text-2xl uppercase my-[20px] mx-auto py-2'> 
         Random GIFS</h1>
 
-      <div className="flex flex-row w-full items-center mt-[15px] justify-center gap-[5rem] mb-5">
+      <div className="flex flex-col md:flex-row w-full items-center mt-[15px] justify-center gap-[2rem] md:gap-[5rem] mb-5">
         <div className=''>
           <Random/>
         </div>
