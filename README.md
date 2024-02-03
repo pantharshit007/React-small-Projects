@@ -2,4 +2,4 @@
 
 ## Live Demo
 
-✨ Random GIF [here](https://git-generator007.netlify.app/).
+✨ Random GIF [here](https://gif-generator007.netlify.app/).
