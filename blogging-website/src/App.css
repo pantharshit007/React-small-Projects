@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body{
+   font-family: 'Playfair Display', serif;
+   overflow-x: hidden;
+}
+
 .spinner {
     width: 11.2px;
     height: 11.2px;

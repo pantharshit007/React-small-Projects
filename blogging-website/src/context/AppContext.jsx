@@ -7,7 +7,7 @@ export const AppContext = createContext();
 export default function AppContextProvider({children}) {
 
     const [loading, setLoading] = useState(false);
-    const [post , setPost] = useState([]);
+    const [posts , setposts] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(null);
 
@@ -15,18 +15,19 @@ export default function AppContextProvider({children}) {
     async function fetchData(page=1){
         setLoading(true);
         let URL = `${baseURL}?page=${page}`;
+        // console.log("url: " + URL);
         try{
             const response = await fetch(URL);
-            const data = response.json();
-            console.log(data);
+            const data = await response.json();
+            // console.log(data);
 
             setPage(data.page);
-            setPost(data.posts);
+            setposts(data.posts);
             setTotalPage(data.totalPages);
         }catch(err){
             console.log('error fetching data: ', err.message);
             setPage(1);
-            setPost([]);
+            setposts([]);
             setTotalPage(null);
         }
         finally{
@@ -39,9 +40,9 @@ export default function AppContextProvider({children}) {
         fetchData(page);
     }
 
-    const values = {
+    const value = {
         loading, setLoading,
-        post, setPost, 
+        posts, setposts, 
         page, setPage,
         totalPage, setTotalPage,
         fetchData,
@@ -50,7 +51,7 @@ export default function AppContextProvider({children}) {
 
     //3 calling Context.Provider
     //here childern is app.jsx which is called in main.jsx
-    return <AppContext.Provider values={values} >
+    return <AppContext.Provider value={value} >
                 {children}  
             </AppContext.Provider>
 }

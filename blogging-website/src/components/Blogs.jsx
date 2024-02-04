@@ -6,9 +6,11 @@ import Card from './Card';
 function Blogs() {
 
   const {loading, posts} = useContext(AppContext);
+  console.log("printing posts...");
+  console.log(posts)
 
   return (
-    <div>
+    <div className='w-11/12 max-w-[660px] h-screen py-6 flex flex-col gap-y-7 mt-14 mb-14'>
         {
             loading ? 
                 (<Spinner/>) : 
@@ -17,7 +19,11 @@ function Blogs() {
                     (<div>
                         No posts available.
                     </div>) : 
-                    ( posts.map((post) => ( <Card post={post} />) ))
+                    ( posts.map((post) => ( 
+                        <Card post={post} 
+                        key={post.id}
+                      />) )
+                    )
 
                 )
         } 
