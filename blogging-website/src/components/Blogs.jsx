@@ -10,24 +10,25 @@ function Blogs() {
   console.log(posts)
 
   return (
-    <div className='w-11/12 max-w-[660px] h-screen py-6 flex flex-col gap-y-7 mt-14 mb-14'>
-        {
-            loading ? 
-                (<Spinner/>) : 
-                (
-                    posts.length === 0 ? 
-                    (<div>
-                        No posts available.
-                    </div>) : 
-                    ( posts.map((post) => ( 
-                        <Card post={post} 
-                        key={post.id}
-                      />) )
-                    )
 
-                )
-        } 
-
+    <div className='my-16 h-full'>
+      <div className='w-11/12 max-w-[660px]  py-6 flex flex-col gap-y-7 '>
+          {
+              loading ?
+                  (<Spinner/>) :
+                  (
+                      posts.length === 0 ?
+                      (<div>
+                          No posts available.
+                      </div>) :
+                      ( posts.map((post) => (
+                          <Card post={post}
+                          key={post.id}
+                        />) )
+                      )
+                  )
+          }
+      </div>
     </div>
   )
 }

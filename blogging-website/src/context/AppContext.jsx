@@ -10,6 +10,7 @@ export default function AppContextProvider({children}) {
     const [posts , setposts] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(null);
+    const [isDark, setIsDark] = useState(true);
 
     //2. requesting data from API 
     async function fetchData(page=1){
@@ -46,7 +47,8 @@ export default function AppContextProvider({children}) {
         page, setPage,
         totalPage, setTotalPage,
         fetchData,
-        pageChangeHandler 
+        pageChangeHandler,
+        isDark, setIsDark 
     }
 
     //3 calling Context.Provider
