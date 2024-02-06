@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import {baseURL} from "../URLapi.js"
-
+import {useNavigate} from 'react-router-dom'
 //1. creating the context
 export const AppContext = createContext();
 
@@ -10,13 +10,21 @@ export default function AppContextProvider({children}) {
     const [posts , setposts] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPage, setTotalPage] = useState(null);
-    const [isDark, setIsDark] = useState(true);
+    const [isDark, setIsDark] = useState(false);
+    const navigation = useNavigate();
 
     //2. requesting data from API 
-    async function fetchData(page=1){
+    async function fetchData(page=1, tag=null, category){
         setLoading(true);
         let URL = `${baseURL}?page=${page}`;
         // console.log("url: " + URL);
+        if (tag){
+            URL += `&tag=${tag}`;
+        }
+        if (category){
+            URL += `&category=${category}`;
+        }
+
         try{
             const response = await fetch(URL);
             const data = await response.json();
@@ -38,7 +46,8 @@ export default function AppContextProvider({children}) {
 
     function pageChangeHandler(page){
         setPage(page);
-        fetchData(page);
+        // fetchData(page);
+        navigation({ search: `?page=${page}`})
     }
 
     const value = {

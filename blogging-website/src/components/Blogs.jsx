@@ -12,7 +12,7 @@ function Blogs() {
   return (
 
     <div className='my-16 h-full'>
-      <div className='w-11/12 max-w-[660px]  py-6 flex flex-col gap-y-7 '>
+      <div className='w-11/12 max-w-[660px] py-6 flex flex-col gap-y-7 '>
           {
               loading ?
                   (<Spinner/>) :
