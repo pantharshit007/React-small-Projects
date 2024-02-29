@@ -1,31 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import React, { useMemo } from 'react';
-import { decrement, increment } from './redux/slices/CounterSlice';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, decrement } from './redux/slices/CounterSlice';
 
 function App() {
   const count = useSelector(state => state.counter.value);
   const dispatch = useDispatch();
 
-  // Memoize the JSX elements to prevent unnecessary renders
-  const memoizedElements = useMemo(() => (
-    <>
-      <div>
-        count: {count}
-      </div>
-      <br />
-      <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
-      <p>hello</p>
-    </>
-    
-  ), [count]);
-
+  // Memoize the count to prevent unnecessary re-renders
+  const memoizedCount = useMemo(() => count, [count]);
   return (
-    <>
-      {memoizedElements}
-      {console.log("re-render")}
-    </>
+    <div>
+      <div>Count: {memoizedCount}</div>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      {/* re-render here is inevitable since whenever we dispatch a action it rerender whole UI*/}
+      <p>hey</p>
+
+    </div>
   );
 }
 
