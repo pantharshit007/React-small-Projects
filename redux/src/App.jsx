@@ -14,7 +14,7 @@ function App() {
       <div>Count: {memoizedCount}</div>
       <button onClick={() => dispatch(increment())}>Increment</button>
       <button onClick={() => dispatch(decrement())}>Decrement</button>
-      {/* re-render here is inevitable since whenever we dispatch a action it rerender whole UI*/}
+      {/* re-render here is inevitable since whenever we dispatch a action it rerender whole UI get re-render to facilate the changes*/}
       <p>hey</p>
 
     </div>
