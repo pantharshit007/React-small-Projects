@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom'
 
 function Navbar() {
     return (
-        <div className='bg-blue-400'>
-            <div className='flex flex-row justify-between'>
+        <div className=''>
+            <nav className='flex justify-between items-center h-20 max-w-6xl mx-auto '>
                 <NavLink to='/'>
-                    <div>
-                        <img src="src\assets\logo.png" alt="Logo" width={300} height={100} />
+                    <div className='ml-5'>
+                        <img src="src\assets\logo.png" alt="Logo" className='h-9' />
                     </div>
                 </NavLink>
 
-                <div>
+                <div className='flex items-center font-medium text-slate-100 mr-5 space-x-6'>
                     <NavLink to='/'>
                         <p>Home</p>
                     </NavLink>
@@ -21,7 +21,7 @@ function Navbar() {
                     </NavLink>
 
                 </div>
-            </div>
+            </nav>
         </div>
     )
 }

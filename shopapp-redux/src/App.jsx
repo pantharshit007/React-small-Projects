@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
 
-      <div>
+      <div className='bg-slate-800'>
         <Navbar />
       </div>
       <Routes>

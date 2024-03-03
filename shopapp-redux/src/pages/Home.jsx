@@ -30,7 +30,7 @@ function Home() {
     }
 
     return (
-        <div>
+        <div className='bg-slate-300'>
             <button onClick={fetchProductData}>click</button>
             {
                 loading ? <Spinner /> :
