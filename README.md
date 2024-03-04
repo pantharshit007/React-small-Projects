@@ -20,4 +20,4 @@
 
 > ✨ Random GIF [here](https://gif-generator007.netlify.app/).
 
-> ✨ Shopp App [here](https://shopapp007.netlify.app/).
+> ✨ Shopp App [here](https://shopapp007.onrender.com).
