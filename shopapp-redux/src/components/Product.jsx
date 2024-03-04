@@ -9,12 +9,12 @@ function Product({ post }) {
 
     function removeFromCart() {
         dispatch(remove(post.id));
-        toast.error("Item removed")
+        toast.error("Item removed from cart");
     }
 
     function addToCart() {
         dispatch(add(post));
-        toast.success("Item added")
+        toast.success("Item added from cart")
     }
 
     return (

@@ -3,7 +3,9 @@ import './spinner.css'
 
 function Spinner() {
     return (
-        <div className='spinner'></div>
+        <div className="flex justify-center items-center min-h-screen">
+            <div className='spinner '></div>
+        </div>
     )
 }
 
