@@ -10,16 +10,20 @@ const todo = require('./models/todo')
 
 app.use(express.json())
 
-app.get('/', async (req, res) => {
-
-    const todos = await todo.find({}, { title: 1, description: 1, _id: 0 })
+app.get('/', (req, res) => {
     return res.json({
         msg: 'hello',
-        data: todos
     })
 })
 
-//mounting this specific API route for version 1 before todoRoutes
+// app.get('/getTodo', async (req, res) => {
+//     const todos = await todo.find({}, { title: 1, description: 1, _id: 0 })
+//     return res.json({
+//         data: todos
+//     })
+// })
+
+//mounting this specific API route for version 1 before todoRoutes [get,post]
 app.use('/api/v1', todoRoutes)
 
 
