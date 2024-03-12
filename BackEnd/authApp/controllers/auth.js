@@ -86,17 +86,23 @@ async function login(req, res, next) {
         const passAuthentication = await bcrypt.compare(password, user.password)
         if (passAuthentication) {
             let token = jwt.sign(payload, JWT_SECRET, { expiresIn: '2h' });
-            user.token = token;
-            user.password = undefined;
+            // user.token = token;
+            // Create a new object with the user properties and add the token
+            const userWithToken = user.toObject();
+            userWithToken.token = token;
+            userWithToken.password = undefined;
+
+            // console.log(userWithToken);
+
             const options = {
                 httpOnly: true, // prevents client-side JS from reading the cookie
-                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // cookie will be removed after 3 days
+                expires: new Date(Date.now() + 2 * 60 * 60 * 1000), // cookie will be removed after 2 hr
             }
 
             res.cookie('token', token, options);
             res.status(200).json({
                 success: true,
-                user: user,
+                user: userWithToken,
                 token: JSON.stringify(token),
                 msg: "Login Successfully"
             })
