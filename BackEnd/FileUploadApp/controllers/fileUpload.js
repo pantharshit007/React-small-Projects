@@ -32,6 +32,11 @@ async function uploadFileToCloudinary(file, folder, quality = 80) {   // Set a d
     }
 }
 
+function checkSize(file, maxFileSizeInMB) {
+    const fileSizeInMB = file.size / (1024 * 1024); // Convert bytes to MB
+    return fileSizeInMB < maxFileSizeInMB;
+}
+
 async function imageUpload(req, res) {
     try {
         const { name, tags, email } = req.body;
@@ -91,6 +96,14 @@ async function videoUpload(req, res) {
             return res.status(404).json({
                 success: false,
                 message: 'File type not supported'
+            })
+        }
+
+        const maxFileSizeInMB = 5; // Maximum file size in MB
+        if (!checkSize(file, maxFileSizeInMB)) {
+            return res.status(404).json({
+                success: false,
+                message: 'File size exceeds maximum Limit of ' + maxFileSizeInMB + ' MB'
             })
         }
 

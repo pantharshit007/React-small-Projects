@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const transporter = require('../config/mailTransporter')
 
 const fileSchema = new mongoose.Schema({
     name: {
@@ -23,13 +24,13 @@ fileSchema.post('save', async function (doc) {
     try {
         //Transporter
         //TODO: shift to config Folder
-        let transporter = nodemailer.createTransport({
-            host: process.env.MAIL_HOST,
-            auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS
-            }
-        });
+        // let transporter = nodemailer.createTransport({
+        //     host: process.env.MAIL_HOST,
+        //     auth: {
+        //         user: process.env.MAIL_USER,
+        //         pass: process.env.MAIL_PASS
+        //     }
+        // });
 
         //send Mail
         let info = await transporter.sendMail({
@@ -44,11 +45,7 @@ fileSchema.post('save', async function (doc) {
         // console.log(info)
 
     } catch (err) {
-        console.log("Mail Not sent: " + err.message)
-        res.status(400).json({
-            success: false,
-            message: "Mail Not sent: " + err.message,
-        })
+        console.log("Mail Not sent: " + err.message);
     }
 })
 
