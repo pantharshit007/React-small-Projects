@@ -11,7 +11,7 @@ function Navbar() {
             <nav className='flex justify-between items-center h-20 max-w-6xl mx-auto '>
                 <NavLink to='/'>
                     <div className='ml-5'>
-                        <img src="src\assets\logo.png" alt="Logo" className='h-9' />
+                        <img src="\logo.png" alt="Logo" className='h-9' />
                     </div>
                 </NavLink>
 
